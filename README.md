@@ -25,7 +25,7 @@
 * Start the dev server with:
 	npm run start-server
 * In your browser, visit the following URL:
-	http://localhost:3001
+	http://localhost:3000
 * While the dev server is running, webpack will be watching for any changes made to the src folder by using the "preLoaders" and "loaders" to determine which files to watch and what to do (much like the equivalent to starting watch tasks via gulp)
 
 ### Making a production build

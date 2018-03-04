@@ -1,0 +1,81 @@
+$bg: #F1F1F1;
+$font: 'Georgia', serif;
+$primary-text: #000000;
+
+/**/
+
+body {
+	background: $bg;
+	font: 100% $font;
+	color: $primary-text;
+	margin: 0px;
+	padding: 0px;
+}
+
+@mixin no-select() {
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.TestPage {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	justify-content: center;
+	align-items: center;
+}
+
+$container-border-width: 4px;
+$container-width: 400px;
+$container-height: 200px;
+$ball-size: 50px;
+
+.ClickableBallContainer {
+	@include no-select();
+	display: flex;
+	cursor: pointer;
+	box-sizing: border-box;
+	border: $container-border-width solid #000;
+	border-radius: 30px;
+	width: $container-width;
+	height: $container-height;
+
+	.ball {
+		display: table;
+		width: $ball-size;
+		height: $ball-size;
+		background: #00FF00;
+		border-radius: 100%;
+		position: relative;
+		transition: 1s;
+		&.s0 {
+			left: 0%;
+			top: 0%;
+		}
+		&.s1 {
+			left: percentage(1 - ($ball-size / (-$container-border-width - $container-border-width + $container-width)));
+			top: 0%;
+		}
+		&.s2 {
+			left: percentage(1 - ($ball-size / (-$container-border-width - $container-border-width + $container-width)));
+			top: percentage(1 - ($ball-size / (-$container-border-width - $container-border-width + $container-height)));
+		}
+		&.s3 {
+			left: 0%;
+			top: percentage(1 - ($ball-size / (-$container-border-width - $container-border-width + $container-height)));
+		}
+	}
+
+	.spinner {
+		width: 50px;
+		height: 50px;
+		align-self: center;
+		margin: auto;
+		position: relative;
+		right: $ball-size / 2;
+	}
+}
